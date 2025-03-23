@@ -1,0 +1,1112 @@
+.product-search {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.search-form {
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  background-color: #1a1a1a;
+  padding: 1.75rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #2a2a2a;
+}
+
+.search-form h2 {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.search-box {
+  display: flex;
+  margin-bottom: 1.5rem;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.search-input {
+  flex: 1;
+  padding: 14px 20px;
+  border: 2px solid transparent;
+  border-radius: 8px 0 0 8px;
+  font-size: 1rem;
+  background-color: #232323;
+  color: #fff;
+  transition: all 0.3s ease;
+  height: 52px;
+}
+
+.search-input:focus {
+  border-color: #b301ad;
+  background-color: #242424;
+  box-shadow: inset 0 0 0 1px rgba(179, 1, 173, 0.3);
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.search-input:focus::placeholder {
+  color: #999;
+}
+
+.search-button {
+  padding: 0 24px;
+  background-color: #b301ad;
+  color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  height: 52px;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.search-button:hover:not(:disabled) {
+  background-color: #d001c9;
+  box-shadow: 0 0 15px rgba(179, 1, 173, 0.4);
+}
+
+.search-button:active:not(:disabled) {
+  transform: translateY(1px);
+  background-color: #990090;
+}
+
+.search-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.fallback-toggle {
+  padding: 0.75rem 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.fallback-toggle:hover {
+  background-color: #444;
+}
+
+.fallback-toggle.active {
+  background-color: #b301ad;
+}
+
+.fallback-toggle.active:hover {
+  background-color: #d401ca;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+  width: 100%;
+}
+
+.filter-group {
+  flex: 1;
+  margin-bottom: 0;
+  max-width: 30%;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #999;
+}
+
+.filter-select,
+.filter-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  background-color: #1a1a1a;
+  color: #fff;
+  transition: all 0.2s ease;
+  height: 36px;
+}
+
+.filter-input:focus,
+.filter-select:focus {
+  border-color: #b301ad;
+  box-shadow: 0 0 0 3px rgba(179, 1, 173, 0.2);
+  outline: none;
+}
+
+.results-count {
+  margin: 1.5rem 0 0.5rem;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: #aaa;
+  font-weight: 500;
+  text-align: left;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding-bottom: 2rem;
+  min-height: 200px;
+}
+
+/* Empty grid placeholders to maintain grid structure when fewer than PRODUCTS_PER_PAGE items */
+.grid-placeholder {
+  height: 0;
+  padding: 0;
+  margin: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .filter-group {
+    max-width: 100%;
+  }
+}
+
+.product-card {
+  position: relative;
+  background-color: #121212;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #222;
+  padding-bottom: 4.5rem; /* Increased to accommodate the larger spacing */
+  height: 100%;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px 5px rgba(179, 1, 173, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+.product-card:hover .price-container {
+  border-color: #333;
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  background-color: #1a1a1a;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.product-details {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2.2rem; /* Reduced from 2.5rem */
+}
+
+.product-card h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 3em; /* Limit height to ensure consistent layout */
+}
+
+.manufacturer {
+  color: #aaa;
+  margin: 0;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.price-container {
+  position: absolute;
+  bottom: 2.6rem; /* Increased gap between elements */
+  left: 0;
+  right: 0;
+  padding: 0.35rem 0;
+  display: flex;
+  align-items: center;
+  background-color: #121212; /* Match product card background */
+  border-radius: 4px;
+  border-bottom: none; /* Removed the bottom border */
+  z-index: auto; /* Reset z-index to avoid stacking context issues */
+}
+
+.price-container::before {
+  content: "Price:";
+  font-size: 0.85rem;
+  color: #777;
+  margin-left: 0.5rem;
+}
+
+.price {
+  color: #b301ad;
+  font-weight: 700;
+  margin: 0;
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+.form-factor {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+  background-color: #333;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #aaa;
+  font-size: 1.1rem;
+  font-weight: 500;
+  position: relative;
+}
+
+.loading:after {
+  content: "...";
+  animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: "."; }
+  40% { content: ".."; }
+  60%, 100% { content: "..."; }
+}
+
+.error {
+  color: #ff6b6b;
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: rgba(255, 107, 107, 0.1);
+  border-radius: 6px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #aaa;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #333;
+}
+
+/* Remove spinner arrows from number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.price-input {
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+/* Skeleton loading styles */
+.skeleton {
+  animation: pulse 1.5s infinite;
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+}
+
+@keyframes pulse {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-image {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+}
+
+.skeleton-title {
+  height: 1.4rem;
+  width: 80%;
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-manufacturer {
+  height: 0.9rem;
+  width: 60%;
+  margin: 0.25rem 0;
+}
+
+.skeleton-price {
+  height: 1.2rem;
+  width: 40%;
+  margin: 0 0 0 0.5rem;
+}
+
+.skeleton-form-factor {
+  height: 1rem;
+  width: 50%;
+  margin: 0.25rem 0;
+}
+
+.typing-indicator {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #b301ad;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  z-index: 1000;
+  opacity: 0.9;
+}
+
+/* Price Range Slider Styles */
+.price-slider-container {
+  width: 100%;
+  padding: 15px 0 30px;
+  position: relative;
+  margin-top: 15px;
+}
+
+/* Track styling */
+.slider-track {
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  background: #333;
+  top: 21px;
+  border-radius: 3px;
+  z-index: 1;
+}
+
+.slider-track-active {
+  position: absolute;
+  height: 6px;
+  background: #b301ad;
+  top: 21px;
+  border-radius: 3px;
+  z-index: 2;
+}
+
+/* Single slider with two handles */
+.price-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: transparent; /* Transparent background as we use the track div */
+  outline: none;
+  position: absolute;
+  pointer-events: none;
+  top: 21px;
+  z-index: 3;
+  margin: 0;
+  padding: 0;
+}
+
+/* Z-index for proper layering */
+.price-slider-min {
+  z-index: 4;
+}
+
+.price-slider-max {
+  z-index: 3;
+}
+
+/* Thumb styling for both handles */
+.price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #b301ad;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  border: 2px solid #000;
+  z-index: 5;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.price-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #b301ad;
+  cursor: pointer;
+  border: 2px solid #000;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  z-index: 5;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover and active states for thumbs */
+.price-slider::-webkit-slider-thumb:hover,
+.price-slider:active::-webkit-slider-thumb {
+  background: #d401ca;
+  transform: scale(1.3);
+  box-shadow: 0 0 15px rgba(179, 1, 173, 0.7);
+}
+
+.price-slider::-moz-range-thumb:hover,
+.price-slider:active::-moz-range-thumb {
+  background: #d401ca;
+  transform: scale(1.3);
+  box-shadow: 0 0 15px rgba(179, 1, 173, 0.7);
+}
+
+.price-range-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  color: #aaa;
+  font-size: 0.85rem;
+  padding: 0;
+  width: 100%;
+}
+
+.price-range-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.price-range-label .label-text {
+  color: #999;
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+.price-range-current {
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 4px 10px;
+  background-color: #2a2a2a;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.price-range-group {
+  flex: 2;
+  margin-bottom: 0;
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pagination-button {
+  padding: 8px 16px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  min-width: 44px;
+  transition: all 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #333;
+  border-color: #444;
+}
+
+.pagination-button.active {
+  background-color: #b301ad;
+  border-color: #b301ad;
+  font-weight: 600;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.results-summary {
+  margin: 1.5rem 0 0.5rem;
+  padding: 0.5rem 0;
+  color: #aaa;
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.filter-indicator {
+  color: #b301ad;
+  font-weight: 600;
+}
+
+.page-indicator {
+  font-weight: 500;
+  color: #aaa;
+}
+
+/* Product Search Container - updated to accommodate comparison panel */
+.product-search-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 80px; /* Space for comparison panel */
+}
+
+/* Comparison Panel Styles */
+.comparison-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #1a1a1a;
+  border-top: 2px solid #b301ad;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  transition: all 0.3s ease;
+  max-height: 250px;
+  overflow: hidden;
+  transform: translateY(calc(100% - 60px));
+}
+
+.comparison-panel.show {
+  transform: translateY(0);
+}
+
+.comparison-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.comparison-header h3 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.comparison-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.clear-compare-btn, 
+.toggle-compare-btn {
+  padding: 0.35rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.clear-compare-btn {
+  background-color: #333;
+  color: #ddd;
+}
+
+.clear-compare-btn:hover:not(:disabled) {
+  background-color: #444;
+}
+
+.toggle-compare-btn {
+  background-color: #b301ad;
+  color: white;
+}
+
+.toggle-compare-btn:hover {
+  background-color: #990090;
+}
+
+.comparison-items {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  /* Enhance scrolling for unlimited items */
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #b301ad #333;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Custom scrollbar for browsers that support it */
+.comparison-items::-webkit-scrollbar {
+  height: 8px;
+}
+
+.comparison-items::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 4px;
+}
+
+.comparison-items::-webkit-scrollbar-thumb {
+  background-color: #b301ad;
+  border-radius: 4px;
+}
+
+.comparison-item {
+  position: relative;
+  width: 200px;
+  min-width: 200px;
+  background-color: #121212;
+  border-radius: 6px;
+  border: 1px solid #333;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.comparison-placeholder {
+  width: 200px;
+  min-width: 200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px dashed #333;
+  border-radius: 6px;
+  color: #666;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.comparison-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}
+
+.comparison-item-details {
+  width: 100%;
+}
+
+.comparison-item-details h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.comparison-price {
+  color: #b301ad;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.remove-compare-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: all 0.2s;
+}
+
+.remove-compare-btn:hover {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+
+/* Add to Compare Button Style */
+.compare-btn {
+  width: calc(100% - 1rem); /* Make button narrower than container */
+  margin: 0 0.5rem; /* Add margins on left and right */
+  padding: 0.6rem 0.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  position: absolute;
+  bottom: 0.5rem; /* Add space from bottom of card */
+  left: 0;
+  right: 0;
+  z-index: auto; /* Reset z-index to default stacking order */
+}
+
+.compare-btn:hover:not(:disabled) {
+  background-color: #444;
+}
+
+.compare-btn.in-compare {
+  background-color: #b301ad;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.compare-btn.in-compare::before {
+  content: "✓";
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.compare-btn.in-compare:hover {
+  background-color: #990090;
+}
+
+.compare-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mobile responsiveness for comparison panel */
+@media (max-width: 768px) {
+  .comparison-panel {
+    max-height: 300px;
+  }
+  
+  .comparison-item {
+    width: 150px;
+    min-width: 150px;
+  }
+  
+  .comparison-placeholder {
+    width: 150px;
+    min-width: 150px;
+  }
+}
+
+/* Make the skeleton price container match the updated live price container */
+.skeleton-card .price-container {
+  background-color: #121212;
+  border-top: none;
+  border-bottom: none; /* Removed the bottom border */
+  bottom: 2.6rem; /* Match the updated position */
+  padding: 0.35rem 0;
+}
+
+/* Compare Details Button */
+.compare-details-btn {
+  padding: 0.35rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #0099ff;
+  color: white;
+}
+
+.compare-details-btn:hover:not(:disabled) {
+  background-color: #0077cc;
+}
+
+.compare-details-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #555;
+}
+
+/* Prevents body scrolling when modal is open */
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+}
+
+/* Comparison Modal Styles */
+.comparison-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.comparison-modal {
+  background-color: #121212;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 1200px;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid #333;
+}
+
+.comparison-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #333;
+  position: sticky;
+  top: 0;
+  background-color: #121212;
+  z-index: 10;
+}
+
+.comparison-modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-modal-btn:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.comparison-modal-content {
+  padding: 1.5rem;
+  overflow-x: auto;
+}
+
+/* Comparison Table Styles */
+.comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #333;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+.comparison-table th {
+  background-color: #1a1a1a;
+  color: #fff;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  border-right: 1px solid #333;
+  min-width: 200px;
+}
+
+.comparison-table th:first-child {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.comparison-table td {
+  border-right: 1px solid #333;
+  vertical-align: middle;
+}
+
+.comparison-table tr:hover {
+  background-color: rgba(179, 1, 173, 0.05);
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.spec-name {
+  font-weight: 500;
+  color: #bbb;
+  background-color: #1a1a1a;
+}
+
+.spec-value {
+  color: #fff;
+}
+
+.price-value {
+  color: #b301ad;
+  font-weight: 600;
+}
+
+.modal-product-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+}
+
+.modal-product-image {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background-color: #333;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.modal-product-header span {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 2.6em;
+  width: 100%;
+}
+
+/* Mobile Responsiveness for Modal */
+@media (max-width: 992px) {
+  .comparison-modal {
+    width: 95%;
+  }
+  
+  .comparison-table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .comparison-table th,
+  .comparison-table td {
+    padding: 8px 12px;
+    min-width: 150px;
+  }
+  
+  .comparison-table th:first-child,
+  .comparison-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 5;
+    background-color: #1a1a1a;
+  }
+} 
